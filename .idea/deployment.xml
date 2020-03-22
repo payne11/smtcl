@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="lab701@115.25.46.37:22" createEmptyFolders="true">
+    <serverData>
+      <paths name="lab701@115.25.46.37:22">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/mvcnn_pytorch_20191113" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

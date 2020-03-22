@@ -1,0 +1,1 @@
+{"name": "MVCNN", "val_path": "../mvcnn/modelnet40_images_new_12x/*/test", "lr_center": 0.1, "train_path": "../mvcnn/modelnet40_images_new_12x/*/train", "no_pretraining": false, "train": false, "num_views": 12, "cnn_name": "vgg11", "weight_decay": 0.0001, "batchSize": 4, "num_models": 1000, "lr": 5e-05}
