@@ -44,7 +44,7 @@ if __name__ == '__main__':
     config_f.close()
     num_feature=1024
     # STAGE 1
-    log_dir = 'smtcloss_wonor_'+args.name+'_stage_1_'+localtime
+    log_dir = 'just_smtcloss_wonor_'+args.name+'_stage_1_'+localtime
     create_folder(log_dir)
 
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     trainer.train(20)
 
     # STAGE 2
-    log_dir =  'smtcloss_wonor_'+args.name+'_stage_2_'+localtime
+    log_dir =  'just_smtcloss_wonor_'+args.name+'_stage_2_'+localtime
     create_folder(log_dir)
     cnet_2 = MVCNN(args.name, cnet, nclasses=40, cnn_name=args.cnn_name, num_views=args.num_views)
     del cnet
