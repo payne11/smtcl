@@ -13,16 +13,16 @@ import pandas as pd
 import utils
 class ModelNetTrainer(object):
 
-    def __init__(self, model, train_loader, val_loader, optimizer, optimizer_centor,loss_fn_softmax,loss_fn_center, \
+    def __init__(self, model, train_loader, val_loader, optimizer, loss_fn_softmax, \
                  model_name, log_dir, num_views=12):
 
         self.optimizer = optimizer
-        self.optimizer_centor = optimizer_centor
+
         self.model = model
         self.train_loader = train_loader
         self.val_loader = val_loader
         self.loss_fn_softmax = loss_fn_softmax
-        self.loss_fn_center = loss_fn_center
+
         self.model_name = model_name
         self.log_dir = log_dir
         self.num_views = num_views
@@ -37,10 +37,6 @@ class ModelNetTrainer(object):
         best_acc = 0
         i_acc = 0
         self.model.train()
-        weight_cent=1;
-        xent_losses = AverageMeter()
-        cent_losses = AverageMeter()
-        losses = AverageMeter()
         for epoch in range(n_epochs):
             # permute data for mvcnn
             rand_idx = np.random.permutation(int(len(self.train_loader.dataset.filepaths)/self.num_views))
@@ -62,24 +58,14 @@ class ModelNetTrainer(object):
                 else:
                     in_data = Variable(data[1].cuda())
                 target = Variable(data[0]).cuda().long()
-
-
                 out_feature,out_data = self.model(in_data)
-                confid_score=nn.Softmax(out_data)
-                loss_cent,dis_np=self.loss_fn_center(out_feature, target)
-                dis_np=dis_np.detach().cpu().numpy()
-                dis_an_ap.append(dis_np)
-                loss_xcent=self.loss_fn_softmax(out_data,target)
-                loss_cent*=weight_cent
-                loss=loss_xcent+loss_cent
-
+                loss=self.loss_fn_softmax(out_data,target)
                 #log_str_dist_an_ap = 'epoch %d,step %d: dist_an_ap %s;' % (epoch + 1 , i+1, dis_np)
                 #data = open("dist_an_ap.txt", 'a')
                 #print(log_str_dist_an_ap, file=data)
                 #data.close()
 
                 self.optimizer.zero_grad()
-                self.optimizer_centor.zero_grad()
                 self.writer.add_scalar('train/train_loss', loss, i_acc+i+1)
 
                 #pred = torch.max(out_data, 1)[1]
@@ -92,13 +78,6 @@ class ModelNetTrainer(object):
                 loss.backward()
                 self.optimizer.step()
 
-                for param in self.loss_fn_center.parameters():
-                    param.grad.data *= (1. / weight_cent)
-                self.optimizer_centor.step()
-
-                losses.update(loss.item(),target.size(0));
-                xent_losses.update(loss_xcent.item(),target.size(0))
-                cent_losses.update(loss_cent.item(),target.size(0))
                 
                 log_str = 'epoch %d, step %d: train_loss %.3f; train_acc %.3f' % (epoch+1, i+1, loss, acc)
                 if (i+1)%1==0:
@@ -174,10 +153,7 @@ class ModelNetTrainer(object):
                 # out_f.extend(out_feature.cpu().detach().numpy())
                 pred_scores, pred = torch.max(out_data, 1)
                 # all_loss += 0.01*self.loss_fn_1(out_feature, target).cpu().data.numpy()+self.loss_fn_2(out_data, target).cpu().data.numpy()#
-                loss_cent, dis_an_ap = self.loss_fn_center(out_feature, target)
-                loss_xcent = self.loss_fn_softmax(out_data, target)
-                loss_cent *= 1
-                loss = loss_xcent + loss_cent  # +
+                loss = self.loss_fn_softmax(out_data, target)
                 all_loss += loss
                 results = pred == target
                 arr_pred_scores = out_data.cpu().detach().numpy()
@@ -190,7 +166,6 @@ class ModelNetTrainer(object):
                         wrong_class[target.cpu().data.numpy().astype('int')[i]] += 1
                     samples_class[target.cpu().data.numpy().astype('int')[i]] += 1
                 correct_points = torch.sum(results.long())
-
                 all_correct_points += correct_points
                 all_points += results.size()[0]
         # #calc mAP and AUC

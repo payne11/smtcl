@@ -44,7 +44,7 @@ if __name__ == '__main__':
     config_f.close()
     num_feature=1024
     # STAGE 1
-    log_dir = 'smtcloss_wonor_'+args.name+'_stage_1_'+localtime
+    log_dir = 'justsoftmax_'+args.name+'_stage_1_'+localtime
     create_folder(log_dir)
 
 
@@ -57,10 +57,8 @@ if __name__ == '__main__':
         print('don.t use gpu')
 
     #有centor loss 时
-    center_loss=Triplet_Center_Loss()
     softmax_loss=nn.CrossEntropyLoss()
     optimizer_model = optim.SGD(cnet.parameters(), lr=args.lr, weight_decay=args.weight_decay,momentum=0.9)
-    optimizer_centerloss = optim.SGD(center_loss.parameters(), lr=args.lr_center)
 
     # #triplet_loss
     # soft_margin_triplet_loss=soft_margin_triplet(max_dist=2)
@@ -77,11 +75,11 @@ if __name__ == '__main__':
 
     print('num_train_files: '+str(len(train_dataset.filepaths)))
     print('num_val_files: '+str(len(val_dataset.filepaths)))
-    trainer = ModelNetTrainer(cnet, train_loader, val_loader, optimizer_model,optimizer_centerloss,softmax_loss,center_loss, 'svcnn', log_dir, num_views=1)
+    trainer = ModelNetTrainer(cnet, train_loader, val_loader, optimizer_model,softmax_loss, 'svcnn', log_dir, num_views=1)
     trainer.train(20)
 
     # STAGE 2
-    log_dir =  'smtcloss_wonor_'+args.name+'_stage_2_'+localtime
+    log_dir =  'justsoftmax_'+args.name+'_stage_2_'+localtime
     create_folder(log_dir)
     cnet_2 = MVCNN(args.name, cnet, nclasses=40, cnn_name=args.cnn_name, num_views=args.num_views)
     del cnet
@@ -95,7 +93,7 @@ if __name__ == '__main__':
     val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=args.batchSize, shuffle=False, num_workers=0)
     print('num_train_files: '+str(len(train_dataset.filepaths)))
     print('num_val_files: '+str(len(val_dataset.filepaths)))
-    trainer = ModelNetTrainer(cnet_2, train_loader, val_loader, optimizer_model,optimizer_centerloss,softmax_loss,center_loss, 'mvcnn', log_dir, num_views=args.num_views)#loss_2,
+    trainer = ModelNetTrainer(cnet_2, train_loader, val_loader, optimizer_model,softmax_loss, 'mvcnn', log_dir, num_views=args.num_views)#loss_2,
     trainer.train(20)
 
 
