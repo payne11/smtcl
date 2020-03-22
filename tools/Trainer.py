@@ -13,7 +13,7 @@ import pandas as pd
 import utils
 class ModelNetTrainer(object):
 
-    def __init__(self, model, train_loader, val_loader, optimizer, optimizer_centor,loss_fn_softmax,loss_fn_center, \
+    def __init__(self, model, train_loader, val_loader, optimizer, optimizer_centor,loss_fn_center, \
                  model_name, log_dir, num_views=12):
 
         self.optimizer = optimizer
@@ -21,7 +21,6 @@ class ModelNetTrainer(object):
         self.model = model
         self.train_loader = train_loader
         self.val_loader = val_loader
-        self.loss_fn_softmax = loss_fn_softmax
         self.loss_fn_center = loss_fn_center
         self.model_name = model_name
         self.log_dir = log_dir
@@ -38,8 +37,6 @@ class ModelNetTrainer(object):
         i_acc = 0
         self.model.train()
         weight_cent=1;
-        xent_losses = AverageMeter()
-        cent_losses = AverageMeter()
         losses = AverageMeter()
         for epoch in range(n_epochs):
             # permute data for mvcnn
@@ -65,13 +62,10 @@ class ModelNetTrainer(object):
 
 
                 out_feature,out_data = self.model(in_data)
-                confid_score=nn.Softmax(out_data)
-                loss_cent,dis_np=self.loss_fn_center(out_feature, target)
+                loss,dis_np=self.loss_fn_center(out_feature, target)
                 dis_np=dis_np.detach().cpu().numpy()
                 dis_an_ap.append(dis_np)
-                loss_xcent=self.loss_fn_softmax(out_data,target)
-                loss_cent*=weight_cent
-                loss=loss_xcent+loss_cent
+
 
                 #log_str_dist_an_ap = 'epoch %d,step %d: dist_an_ap %s;' % (epoch + 1 , i+1, dis_np)
                 #data = open("dist_an_ap.txt", 'a')
@@ -97,8 +91,6 @@ class ModelNetTrainer(object):
                 self.optimizer_centor.step()
 
                 losses.update(loss.item(),target.size(0));
-                xent_losses.update(loss_xcent.item(),target.size(0))
-                cent_losses.update(loss_cent.item(),target.size(0))
                 
                 log_str = 'epoch %d, step %d: train_loss %.3f; train_acc %.3f' % (epoch+1, i+1, loss, acc)
                 if (i+1)%1==0:
@@ -174,10 +166,7 @@ class ModelNetTrainer(object):
                 # out_f.extend(out_feature.cpu().detach().numpy())
                 pred_scores, pred = torch.max(out_data, 1)
                 # all_loss += 0.01*self.loss_fn_1(out_feature, target).cpu().data.numpy()+self.loss_fn_2(out_data, target).cpu().data.numpy()#
-                loss_cent, dis_an_ap = self.loss_fn_center(out_feature, target)
-                loss_xcent = self.loss_fn_softmax(out_data, target)
-                loss_cent *= 1
-                loss = loss_xcent + loss_cent  # +
+                loss, dis_an_ap = self.loss_fn_center(out_feature, target)
                 all_loss += loss
                 results = pred == target
                 arr_pred_scores = out_data.cpu().detach().numpy()

@@ -27,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train_mvcnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="79" column="22" selection-start-line="79" selection-start-column="22" selection-end-line="79" selection-end-column="22" />
+            <state relative-caret-position="1554">
+              <caret line="96" column="23" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -63,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/Trainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3046">
-              <caret line="263" column="32" lean-forward="true" selection-start-line="263" selection-start-column="32" selection-end-line="263" selection-end-column="32" />
+            <state relative-caret-position="-1086">
+              <caret line="75" column="33" lean-forward="true" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -87,7 +87,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/my_loss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
+            <state relative-caret-position="425">
               <caret line="125" column="92" lean-forward="true" selection-start-line="125" selection-start-column="92" selection-end-line="125" selection-end-column="92" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
@@ -120,10 +120,10 @@
         <option value="&lt;f4cc0bf5-48f0-4663-9753-09e739080dfc&gt;/mvcnn_pytorch_20191113/mAP.txt" />
         <option value="$PROJECT_DIR$/tools/ImgDataset.py" />
         <option value="$PROJECT_DIR$/utils.py" />
-        <option value="$PROJECT_DIR$/tools/Trainer.py" />
         <option value="$PROJECT_DIR$/models/MVCNN.py" />
         <option value="$PROJECT_DIR$/tools/my_loss.py" />
         <option value="$PROJECT_DIR$/train_mvcnn.py" />
+        <option value="$PROJECT_DIR$/tools/Trainer.py" />
       </list>
     </option>
   </component>
@@ -249,17 +249,18 @@
       <workItem from="1574144662534" duration="66834000" />
       <workItem from="1575334600092" duration="4363000" />
       <workItem from="1575376501151" duration="16924000" />
-      <workItem from="1575852971241" duration="217211000" />
+      <workItem from="1575852971241" duration="218922000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="355875000" />
+    <option name="totallyTimeSpent" value="357586000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25906184" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12473348" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -270,18 +271,18 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.6401919" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.63965887" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.4989339" weight="0.27874187" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4978678" visible="true" weight="0.3286334" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5021322" side_tool="true" visible="true" weight="0.3286334" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4978678" weight="0.3286334" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.36034116" side_tool="true" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.2185501" />
       <window_info anchor="right" id="Database" order="4" weight="0.32889125" />
-      <window_info anchor="right" id="Remote Host" order="5" visible="true" weight="0.31769723" />
+      <window_info anchor="right" id="Remote Host" order="5" visible="true" weight="0.17004265" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15191898" />
@@ -477,36 +478,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/MVCNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/Trainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3046">
-          <caret line="263" column="32" lean-forward="true" selection-start-line="263" selection-start-column="32" selection-end-line="263" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/my_loss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="125" column="92" lean-forward="true" selection-start-line="125" selection-start-column="92" selection-end-line="125" selection-end-column="92" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/ImgDataset.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -517,10 +488,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/MVCNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/my_loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="125" column="92" lean-forward="true" selection-start-line="125" selection-start-column="92" selection-end-line="125" selection-end-column="92" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/Trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1086">
+          <caret line="75" column="33" lean-forward="true" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/train_mvcnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="79" column="22" selection-start-line="79" selection-start-column="22" selection-end-line="79" selection-end-column="22" />
+        <state relative-caret-position="1554">
+          <caret line="96" column="23" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
